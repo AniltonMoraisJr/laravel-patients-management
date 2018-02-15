@@ -7,7 +7,31 @@
 
 require('./bootstrap');
 
+import VueRouter from 'vue-router'
+
 window.Vue = require('vue');
+
+Vue.use(VueRouter)
+
+import App from './components/AppComponent'
+import Home from './components/HomeComponent'
+import Patients from './components/patients/PatientsComponent'
+
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        {
+            path: '/admin/home',
+            name: 'home',
+            component: Home
+        },
+        {
+            path: '/admin/patients',
+            name: 'patients',
+            component: Patients
+        }
+    ],    
+})
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +39,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    components: { App },
+    router,
 });

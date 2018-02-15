@@ -164,6 +164,8 @@ return [
         * Modules Providers
          */
         App\Modules\Authentication\Providers\ModuleAuthenticationServiceProvider::class,
+        App\Modules\Admin\Providers\ModuleAdminServiceProvider::class,
+        App\Modules\Patient\Providers\ModulePatientServiceProvider::class,
 
     ],
 
