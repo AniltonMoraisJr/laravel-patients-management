@@ -47,6 +47,7 @@ class ModulePatientServiceProvider extends ServiceProvider
         if(is_dir(__DIR__.'/../Routes') && (file_exists(__DIR__.'/../Routes/api.php')))
         {
             \Route::middleware('api')
+                ->prefix('api')
                  ->namespace($this->namespace)
                 ->group(__DIR__.'/../Routes/api.php');
         }

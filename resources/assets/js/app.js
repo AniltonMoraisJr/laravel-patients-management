@@ -12,10 +12,12 @@ import VueRouter from 'vue-router'
 window.Vue = require('vue');
 
 Vue.use(VueRouter)
+Vue.use(require('vue-moment'))
 
 import App from './components/AppComponent'
 import Home from './components/HomeComponent'
 import Patients from './components/patients/PatientsComponent'
+import NewPatient from './components/patients/NewPatientComponent';
 
 const router = new VueRouter({
     mode: 'history',
@@ -28,8 +30,16 @@ const router = new VueRouter({
         {
             path: '/admin/patients',
             name: 'patients',
-            component: Patients
+            component: Patients,
+            children:[
+            ]
+        },
+        {
+            path: '/admin/patients/create',
+            name: 'new_patient',
+            component: NewPatient,
         }
+        
     ],    
 })
 
