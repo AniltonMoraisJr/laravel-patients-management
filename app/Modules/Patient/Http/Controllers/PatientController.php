@@ -3,6 +3,7 @@
 namespace App\Modules\Patient\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Modules\Patient\Patient;
 use App\Core\Http\Controllers\Controller;
 use App\Modules\Patient\Http\Requests\PatientRequest;
 use App\Modules\Patient\Repositories\PatientRepository;
@@ -22,10 +23,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        //
-
-        $patients = $this->repository->paginate($limit = 1, $columns = ['*'] );
-
+        $patients = Patient::select('id', 'full_name','email','birthday')->where('user_id', '=', \Auth::user()->id)->paginate(10); 
         return response()->json($patients, 200);
     }
 
@@ -49,7 +47,7 @@ class PatientController extends Controller
     {
         //
 
-        $patient = $this->repository->create($request->all());
+        $patient = $this->repository->storePatient($request->all());
         return response()->json($patient, 200);
     }
 
@@ -62,6 +60,7 @@ class PatientController extends Controller
     public function show($id)
     {
         //
+        return response()->json(\Auth::user(), 200);
     }
 
     /**

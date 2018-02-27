@@ -26,4 +26,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function patients(){
+        return $this->hasMany('App\Modules\Patient\Patient');
+    }
 }

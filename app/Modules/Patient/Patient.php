@@ -19,6 +19,11 @@ class Patient extends Model
         'address_two',
         'city',
         'state',
-        'country'
+        'country',
+        'user_id'
     ];
+
+    public function user(){
+        return $this->belongsTo('App\Modules\User\User', 'user_id');
+    }
 }

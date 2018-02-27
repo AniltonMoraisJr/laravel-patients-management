@@ -8,14 +8,10 @@
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
-<body>
+<body class="bg-light">
     <div id="app">    
         @include('admin::partials.admin-menu')
-        <main class="py-4">
-            <div class="container">
-                @yield('content')
-            </div>
-        </main>
+        @yield('content')
     </div>
 
     <script src="{{ asset('js/app.js')  }}"></script>

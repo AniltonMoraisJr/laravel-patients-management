@@ -8,11 +8,16 @@
 require('./bootstrap');
 
 import VueRouter from 'vue-router'
+import VueTheMask from 'vue-the-mask'
+import VeeValidate from 'vee-validate'
+
 
 window.Vue = require('vue');
 
 Vue.use(VueRouter)
 Vue.use(require('vue-moment'))
+Vue.use(VeeValidate)
+Vue.use(VueTheMask)
 
 import App from './components/AppComponent'
 import Home from './components/HomeComponent'
