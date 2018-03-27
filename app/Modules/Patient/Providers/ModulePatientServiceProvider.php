@@ -37,7 +37,8 @@ class ModulePatientServiceProvider extends ServiceProvider
         if(is_dir(__DIR__.'/../Routes') && (file_exists(__DIR__.'/../Routes/web.php')))
         {
             \Route::middleware('web')
-                 ->namespace($this->namespace)
+                ->prefix('api')
+                ->namespace($this->namespace)
                 ->group(__DIR__.'/../Routes/web.php');
         }
     }
@@ -48,7 +49,7 @@ class ModulePatientServiceProvider extends ServiceProvider
         {
             \Route::middleware('api')
                 ->prefix('api')
-                 ->namespace($this->namespace)
+                ->namespace($this->namespace)
                 ->group(__DIR__.'/../Routes/api.php');
         }
     }

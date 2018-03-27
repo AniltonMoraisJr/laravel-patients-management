@@ -40,4 +40,9 @@ class PatientRepository extends BaseRepository
         return $patient;
 
     }
+    public function listPatients()
+    {
+        $patients = Patient::select('id', 'full_name','email','birthday')->where('user_id', '=', \Auth::user()->id)->paginate(5); 
+        return $patients; 
+    }
 }

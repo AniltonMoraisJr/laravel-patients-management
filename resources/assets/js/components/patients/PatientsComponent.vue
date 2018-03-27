@@ -4,6 +4,9 @@
             <h1>Patients component</h1>
         </div>
         <div class="container">
+            <back-button></back-button>
+            <br>
+            <br>
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -23,7 +26,7 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="patient in patients">
-                                        <td>{{ patient.id }}</td>
+                                        <td><router-link :to="{ name: 'view_patient', params: {id: patient.id } }">{{ patient.id }}</router-link></td>
                                         <td>{{ patient.full_name }}</td>
                                         <td>{{ patient.email }}</td>
                                         <td>{{ patient.birthday | moment("DD/MM/YYYY") }}</td>
@@ -32,12 +35,12 @@
                             </table>
                         </div>
                         
-                        <div class="pagination">
+                        <div class="pagination px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" >
                             <button class="btn btn-default" @click="fetchStories(pagination.prev_page_url)"
                                     :disabled="!pagination.prev_page_url">
                                 Previous
                             </button>
-                            <span>Page {{ pagination.current_page }} of {{ pagination.last_page }}</span>
+                            <span style="margin-left: 5em;margin-right: 5em;">Page {{ pagination.current_page }} of {{ pagination.last_page }}</span>
                             <button class="btn btn-default" @click="fetchStories(pagination.next_page_url)"
                                     :disabled="!pagination.next_page_url">Next
                             </button>
@@ -59,7 +62,7 @@
             }
         },
         created () {
-            let url = "http://localhost:8000/patients";
+            let url = "http://localhost:8000/api/patients";
             axios.get(url)
                 .then(response => {
                     this.patients = response.data.data;

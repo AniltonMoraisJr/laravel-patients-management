@@ -23,7 +23,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        $patients = Patient::select('id', 'full_name','email','birthday')->where('user_id', '=', \Auth::user()->id)->paginate(10); 
+        $patients = $this->repository->listPatients(); 
         return response()->json($patients, 200);
     }
 
@@ -60,7 +60,11 @@ class PatientController extends Controller
     public function show($id)
     {
         //
-        return response()->json(\Auth::user(), 200);
+        $patient = $this->repository->findWhere([
+            'id' => $id,
+            'user_id' => \Auth::user()->id
+        ]);
+        return response()->json($patient, 200);
     }
 
     /**

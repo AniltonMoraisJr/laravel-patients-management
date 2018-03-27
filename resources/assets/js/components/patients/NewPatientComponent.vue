@@ -4,7 +4,7 @@
          <h1>New Patient</h1>
         </div>
         <div class="container">
-            <router-link :to="{name: 'patients'}" class="btn btn-secondary float-left">Back</router-link>
+            <back-button></back-button>
             <br/>
             <br/>
             <div class="card">
@@ -75,7 +75,7 @@
                         <div class="row">
                             <div class="form-group col-md-4">
                                 <label for="inputPhone">Phone</label>
-                                <input type="text" id="inputPhone" :class="{'form-control is-invalid': errors.has('phone'), 'form-control': true }" name="phone" v-model="phone" v-validate="'required'"/>
+                                <input type="text" id="inputPhone" :class="{'form-control is-invalid': errors.has('phone'), 'form-control': true }" name="phone" v-model="phone" v-mask="['(##) ####-####', '(##) #####-####']" v-validate="'required'"/>
                                 <p class="text-danger" v-if="errors.has('phone')">{{ errors.first('phone') }}</p>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                 }
             },
             submitForm(){
-                axios.post('http://localhost:8000/patients', {
+                axios.post('http://localhost:8000/api/patients', {
                     full_name: this.full_name,
                     email: this.email,
                     birthday: this.birthday,

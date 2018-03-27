@@ -23,6 +23,9 @@ import App from './components/AppComponent'
 import Home from './components/HomeComponent'
 import Patients from './components/patients/PatientsComponent'
 import NewPatient from './components/patients/NewPatientComponent';
+import DetailPatient from './components/patients/DetailPatientComponent';
+
+Vue.component('back-button', require('./utils/BackButtonComponent'));
 
 const router = new VueRouter({
     mode: 'history',
@@ -36,13 +39,16 @@ const router = new VueRouter({
             path: '/admin/patients',
             name: 'patients',
             component: Patients,
-            children:[
-            ]
         },
         {
             path: '/admin/patients/create',
             name: 'new_patient',
             component: NewPatient,
+        },
+        {
+            path: '/admin/patients/:id',
+            name: 'view_patient',
+            component: DetailPatient,
         }
         
     ],    
