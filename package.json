@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "vee-validate": "^2.0.4",
+    "vue-full-calendar": "^2.5.2",
     "vue-moment": "^3.2.0",
     "vue-router": "^3.0.1",
     "vue-the-mask": "^0.11.1"

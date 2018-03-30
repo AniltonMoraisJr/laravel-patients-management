@@ -22,7 +22,7 @@
                             </div>
                             <div class="form-group col-md-2" >
                                 <label for="inputBirthday">Birthday</label>
-                                <p id="inputBirthday">{{ birthday }}</p>
+                                <p id="inputBirthday">{{ birthday | moment("DD/MM/YYYY") }}</p>
                             </div>
                             <div class="form-group col-md-2" >
                                 <label for="inputGenre">Genrer</label>

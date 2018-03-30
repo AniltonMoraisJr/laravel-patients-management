@@ -166,6 +166,7 @@ return [
         App\Modules\Authentication\Providers\ModuleAuthenticationServiceProvider::class,
         App\Modules\Admin\Providers\ModuleAdminServiceProvider::class,
         App\Modules\Patient\Providers\ModulePatientServiceProvider::class,
+        App\Modules\MedicalAppointment\Providers\ModuleMedicalAppointmentServiceProvider::class,
 
     ],
 
